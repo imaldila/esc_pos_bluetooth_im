@@ -12,7 +12,8 @@ dependencies:
   oktoast: ^3.0.0
   image: ^3.0.2
   esc_pos_bluetooth:
-    path: ../../
+    git:
+      url: https://github.com/imaldila/esc_pos_bluetooth_im
   esc_pos_utils: ^1.1.0
   # esc_pos_utils:
   # path: ../../../esc_pos_utils
@@ -32,3 +33,5 @@ flutter:
     - assets/logo216.png
     - assets/logo222.png
     - assets/rabbit_black.jpg
+
+publish_to: none
