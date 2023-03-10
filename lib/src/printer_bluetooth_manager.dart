@@ -54,7 +54,7 @@ class PrinterBluetoothManager {
     _isScanningSubscription =
         _bluetoothManager.isScanning.listen((isScanningCurrent) async {
       // If isScanning value changed (scan just stopped)
-      if (_isScanning.value&& !isScanningCurrent) {
+      if (_isScanning.value && !isScanningCurrent) {
         _scanResultsSubscription!.cancel();
         _isScanningSubscription!.cancel();
       }
@@ -132,9 +132,13 @@ class PrinterBluetoothManager {
 
     // Printing timeout
     _runDelayed(timeout).then((dynamic v) async {
-      if (_isPrinting) {
-        _isPrinting = false;
-        completer.complete(PosPrintResult.timeout);
+      try {
+        if (_isPrinting) {
+          _isPrinting = false;
+          completer.complete(PosPrintResult.timeout);
+        }
+      } catch (e, stacktrace) {
+        print('$e, ${[stacktrace]}');
       }
     });
 
